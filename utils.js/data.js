@@ -13,6 +13,8 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: 'A popular shirt',
+      descriptionDetails:
+        'You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:border-t-4 to apply the border-t-4 utility at only medium screen sizes and above.',
     },
     {
       name: 'Fit Shirt',
@@ -27,6 +29,8 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: 'A popular shirt',
+      descriptionDetails:
+        'You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:border-t-4 to apply the border-t-4 utility at only medium screen sizes and above.',
     },
     {
       name: 'Slim Shirt',
@@ -39,6 +43,8 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: 'A popular shirt',
+      descriptionDetails:
+        'You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:border-t-4 to apply the border-t-4 utility at only medium screen sizes and above.',
     },
     {
       name: 'Golf Pants',
@@ -51,6 +57,8 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: 'Smart looking pants',
+      descriptionDetails:
+        'You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:border-t-4 to apply the border-t-4 utility at only medium screen sizes and above.',
     },
     {
       name: 'Fit Pants',
@@ -63,6 +71,8 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: 'A popular pants',
+      descriptionDetails:
+        'You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:border-t-4 to apply the border-t-4 utility at only medium screen sizes and above.',
     },
     {
       name: 'Classic Pants',
@@ -75,6 +85,8 @@ const data = {
       numReviews: 10,
       countInStock: 20,
       description: 'A popular pants',
+      descriptionDetails:
+        'You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:border-t-4 to apply the border-t-4 utility at only medium screen sizes and above.',
     },
   ],
 };

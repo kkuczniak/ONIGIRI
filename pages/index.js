@@ -7,10 +7,9 @@ export default function Home() {
     <>
       <Layout>
         <div>
-          <h1>Hello Product</h1>
-          <ul className='HomePage-Products flex justify-center'>
+          <ul className='HomePage-Products flex lg:flex-row flex-col justify-center'>
             {data.products.slice(0, 3).map((product) => (
-              <li key={product.name} className='py-0 px-3 w-1/4'>
+              <li key={product.name} className='py-0 px-3 lg:w-1/4 w-full'>
                 <div className='pb-10 h-full'>
                   <Link href={`/product/${product.slug}`}>
                     <div className='flex relative flex-col justify-between h-full cursor-pointer'>
