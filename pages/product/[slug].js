@@ -12,9 +12,9 @@ export default function ProductScreen() {
   }
 
   return (
-    <Layout title={product.name}>
-      <div className='detailsContainer'>
-        <section className='firstDetails h-screen flex flex-col lg:flex-row'>
+    <Layout title={product.name} description={product.description}>
+      <div className='detailsContainer '>
+        <section className='firstDetails h-screen flex flex-col lg:flex-row mb-12 lg:mb-3'>
           <div className='leftDetails'>
             <Image
               src={product.image}
@@ -25,12 +25,12 @@ export default function ProductScreen() {
           </div>
           <div className='rightDetails flex flex-col lg:p-20 p-5  lg:w-1/2 '>
             <div className='detailsDescription flex flex-col  items-start '>
-              <h1 className='tracking-wide lg:text-4xl text-2xl pb-4'>
+              <h1 className='tracking-wide lg:text-4xl text-2xl pb-4 font-bold'>
                 {product.name}
               </h1>
               <p>{product.category}</p>
               <p>{product.brand}</p>
-              <div className='detailsDescriptionText flex w-full lg:w-4/5 pt-5'>
+              <div className='detailsDescriptionText flex w-full lg:w-4/5 pt-5 text-xl'>
                 <p className='tracking-wide'>{product.descriptionDetails}</p>
               </div>
             </div>
@@ -54,13 +54,13 @@ export default function ProductScreen() {
           </div>
         </section>
         {/* packing section below */}
-        <section className='aboutDetails flex lg:flex-row flex-col items-center bg-[#f1f4f0]'>
+        <section className='aboutDetails flex lg:flex-row flex-col items-center bg-[#f1f4f0] mt-12 lg:mt-1'>
           <video autoPlay loop className='h-'>
             <source src='/videos/packing.mp4' type='video/mp4' />
           </video>
           <div className='textPacking lg:pl-[5%]'>
             <div className='textAreaPacking flex flex-col items-center pt-5'>
-              <h1 className='text-2xl lg:text-4xl tracking-wider leading-3'>
+              <h1 className='text-2xl lg:text-4xl font-bold tracking-wider leading-3'>
                 Prezent dla Ciebie
               </h1>
               <p className='lg:text-xl text-lg max-w-[90%] pt-5 tracking-wide'>
@@ -72,7 +72,7 @@ export default function ProductScreen() {
           </div>
         </section>
         <section className='faq mt-20 min-h-[40vh] bg-[#303b31] items-center flex flex-col text-white lg:px-96 px-5'>
-          <h1 className='tracking-wide lg:text-4xl text-2xl py-5'>
+          <h1 className='tracking-wide lg:text-4xl text-2xl py-5 font-bold'>
             Nadal masz pytania? Przejrzyj nasz FAQ!
           </h1>
           <ul className='pb-5'>

@@ -4,15 +4,15 @@ import Head from 'next/head';
 //components
 import Header from './Header';
 
-export default function Layout({ title, children }) {
+export default function Layout({ title, children, description }) {
   return (
     <>
       <Head>
         <title>{title ? `${title} - ONIGIRI` : 'ONIGIRI'}</title>
-        <meta name='description' content='e-commerce' />
+        {description && <meta name='description' content={description} />}
       </Head>
       <Header />
-      <main className=''>{children}</main>
+      <main className='font-serif font-medium '>{children}</main>
     </>
   );
 }

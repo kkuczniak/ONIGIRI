@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className='flex items-center flex-wrap bg-orange-50 p-3 '>
+      <nav className='flex items-center flex-wrap bg-orange-50 p-3 font-bold font-serif'>
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <svg
@@ -52,22 +52,22 @@ export default function Header() {
         >
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
             <Link href='/products'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-light items-center justify-center hover:bg-red-50 hover:text-black '>
+              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black '>
                 Produkty
               </a>
             </Link>
             <Link href='/about'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-light items-center justify-center hover:bg-red-50 hover:text-black'>
+              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 O nas
               </a>
             </Link>
             <Link href='/login'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-light items-center justify-center hover:bg-red-50 hover:text-black'>
+              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 Zaloguj się
               </a>
             </Link>
             <Link href='/basket'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-light items-center justify-center hover:bg-red-50 hover:text-black'>
+              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 Koszyk
               </a>
             </Link>
