@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Store } from '../utils.js/Store';
 
 export default function Header() {
   const [active, setActive] = useState(false);
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
 
   const handleClick = () => {
     setActive(!active);
@@ -68,7 +71,11 @@ export default function Header() {
             </Link>
             <Link href='/basket'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
-                Koszyk
+                {cart.cartItems.length > 0 ? (
+                  <span>Koszyk ({cart.cartItems.length})</span>
+                ) : (
+                  <span>Koszyk</span>
+                )}
               </a>
             </Link>
           </div>
