@@ -1,7 +1,5 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
-import data from '../../utils.js/data';
 import Product from '../../models/Product';
 import db from '../../utils.js/db';
 

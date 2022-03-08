@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import data from '../utils.js/data';
 import db from '../utils.js/db';
 import Product from '../models/Product';
 
