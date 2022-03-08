@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import Product from '../../models/Product';
 import db from '../../utils.js/db';
@@ -9,6 +10,8 @@ import { Store } from '../../utils.js/Store';
 export default function ProductScreen(props) {
   const { state, dispatch } = useContext(Store);
   const { product } = props;
+  const router = useRouter();
+  const [count, setCount] = useState(1);
 
   if (!product) {
     return <div>Nie znaleziono produktu</div>;
@@ -19,7 +22,11 @@ export default function ProductScreen(props) {
     if (data.countInStock <= 0) {
       window.alert('Przepraszamy, brak produktu na magazynie');
     }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity: 1 } });
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: count },
+    });
+    router.push('/cart');
   };
 
   return (
@@ -51,9 +58,13 @@ export default function ProductScreen(props) {
               </h2>
               <div className='detailsButtons flex flex-row pt-5'>
                 <div className='counter flex flex-row w-24 mb-4 mr-4 justify-around items-center h-12 border border-solid'>
-                  <button>-</button>
-                  <p>1</p>
-                  <button>+</button>
+                  <button
+                    onClick={() => setCount((count) => Math.max(count - 1, 0))}
+                  >
+                    -
+                  </button>
+                  <p>{count}</p>
+                  <button onClick={() => setCount(count + 1)}>+</button>
                 </div>
                 <div className='addToBasketDetails flex mb-4'>
                   <button

@@ -69,7 +69,7 @@ export default function Header() {
                 Zaloguj się
               </a>
             </Link>
-            <Link href='/basket'>
+            <Link href='/cart'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 {cart.cartItems.length > 0 ? (
                   <span>Koszyk ({cart.cartItems.length})</span>
