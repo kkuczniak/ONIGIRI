@@ -2,11 +2,12 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
 import data from '../../utils.js/data';
+import Product from '../../models/Product';
+import db from '../../utils.js/db';
 
-export default function ProductScreen() {
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = data.products.find((a) => a.slug === slug);
+export default function ProductScreen(props) {
+  const { product } = props;
+
   if (!product) {
     return <div>Nie znaleziono produktu</div>;
   }
@@ -96,4 +97,15 @@ export default function ProductScreen() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: { product: db.convertDocToObj(product) },
+  };
 }

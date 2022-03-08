@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import data from '../utils.js/data';
+import db from '../utils.js/db';
+import Product from '../models/Product';
 
-export default function Home() {
+export default function Home(props) {
+  const { products } = props;
   return (
     <>
       <Layout>
         <div>
           <ul className='HomePage-Products flex lg:flex-row flex-col justify-center pt-8'>
-            {data.products.slice(0, 3).map((product) => (
+            {products.slice(0, 3).map((product) => (
               <li key={product.name} className='py-0 px-3 lg:w-1/4 w-full'>
                 <div className='pb-10 h-full'>
                   <Link href={`/product/${product.slug}`}>
@@ -34,4 +37,13 @@ export default function Home() {
       </Layout>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  await db.connect();
+  const products = await Product.find({}).lean();
+  await db.disconnect();
+  return {
+    props: { products: products.map(db.convertDocToObj) },
+  };
 }
