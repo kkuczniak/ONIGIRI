@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 
 //components
 import Header from './Header';
+import { Store } from '../utils.js/Store';
 
 export default function Layout({ title, children, description }) {
+  const { state, dispatch } = useContext(Store);
+
   return (
     <>
       <Head>

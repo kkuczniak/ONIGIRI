@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Layout>
         <div>
-          <ul className='HomePage-Products flex lg:flex-row flex-col justify-center'>
+          <ul className='HomePage-Products flex lg:flex-row flex-col justify-center pt-8'>
             {data.products.slice(0, 3).map((product) => (
               <li key={product.name} className='py-0 px-3 lg:w-1/4 w-full'>
                 <div className='pb-10 h-full'>
