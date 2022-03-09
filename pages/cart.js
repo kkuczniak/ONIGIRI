@@ -1,15 +1,31 @@
 import { useContext } from 'react';
+import axios from 'axios';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Store } from '../utils.js/Store';
 import Layout from '../components/Layout';
 
-export default function CartScreen() {
-  const { state } = useContext(Store);
+function CartScreen() {
+  const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
   console.log(cartItems);
+
+  // const updateCartHandler = async (item, quantity) => {
+  //   const { data } = await axios.get(`/api/products/${item._id}`);
+  //   if (data.countInStock < quantity) {
+  //     window.alert('Sorry. Product is out of stock');
+  //     return;
+  //   }
+  //   dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+  // };
+
+  const removeItemHandler = (item) => {
+    dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+
   return (
     <Layout title='Podsumowanie'>
       <section className='cart items-center flex justify-center flex-col pt-5'>
@@ -52,7 +68,9 @@ export default function CartScreen() {
                       <p>{item.price} zł</p>
                     </div>
                     <div className='tableCell px-1 flex items-center'>
-                      <button>usuń</button>
+                      <button onClick={() => removeItemHandler(item)}>
+                        usuń
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -74,3 +92,4 @@ export default function CartScreen() {
     </Layout>
   );
 }
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });

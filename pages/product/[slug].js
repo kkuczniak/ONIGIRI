@@ -22,9 +22,11 @@ export default function ProductScreen(props) {
     if (data.countInStock <= 0) {
       window.alert('Przepraszamy, brak produktu na magazynie');
     }
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + count : 1;
     dispatch({
       type: 'CART_ADD_ITEM',
-      payload: { ...product, quantity: count },
+      payload: { ...product, quantity },
     });
     router.push('/cart');
   };

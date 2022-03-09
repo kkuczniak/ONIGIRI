@@ -1,10 +1,30 @@
 import Link from 'next/link';
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import db from '../utils.js/db';
 import Product from '../models/Product';
+import axios from 'axios';
+import { Store } from '../utils.js/Store';
 
 export default function Home(props) {
   const { products } = props;
+  const { state, dispatch } = useContext(Store);
+  const router = useRouter();
+
+  const addToCartHandler = async (product) => {
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock <= 0) {
+      window.alert('Przepraszamy, brak produktu na magazynie');
+    }
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity },
+    });
+    router.push('/cart');
+  };
   return (
     <>
       <Layout>
@@ -25,7 +45,10 @@ export default function Home(props) {
                       </div>
                     </div>
                   </Link>
-                  <button className='bg-slate-700 text-white uppercase my-1 py-2 flex relative w-full justify-center'>
+                  <button
+                    onClick={() => addToCartHandler(product)}
+                    className='bg-slate-700 text-white uppercase my-1 py-2 flex relative w-full justify-center'
+                  >
                     Dodaj do koszyka
                   </button>
                 </div>
