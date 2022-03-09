@@ -23,7 +23,7 @@ export default function ProductScreen(props) {
       window.alert('Przepraszamy, brak produktu na magazynie');
     }
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
-    const quantity = existItem ? existItem.quantity + count : 1;
+    const quantity = existItem ? existItem.quantity + count : count;
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity },

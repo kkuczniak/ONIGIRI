@@ -13,6 +13,7 @@ export default function Layout({ title, children, description }) {
       <Head>
         <title>{title ? `${title} - ONIGIRI` : 'ONIGIRI'}</title>
         {description && <meta name='description' content={description} />}
+        <link rel='shortcut icon' href='/leafIcon.png' />
       </Head>
       <Header />
       <main className='font-serif font-medium '>{children}</main>

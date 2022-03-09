@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import { Store } from '../utils.js/Store';
 import Layout from '../components/Layout';
 
 function CartScreen() {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -24,6 +26,10 @@ function CartScreen() {
 
   const removeItemHandler = (item) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+
+  const checkoutHandler = () => {
+    router.push('/shipping');
   };
 
   return (
@@ -81,7 +87,10 @@ function CartScreen() {
                   produkty) :{' '}
                   {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)} zł
                 </h2>
-                <button className='w-56 pt-2 bg-neutral-800 text-white uppercase'>
+                <button
+                  onClick={checkoutHandler}
+                  className='w-56 pt-2 bg-neutral-800 text-white uppercase'
+                >
                   Przejdź do kasy
                 </button>
               </div>
