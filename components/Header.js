@@ -1,16 +1,25 @@
+import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { Store } from '../utils.js/Store';
 
 export default function Header() {
+  const router = useRouter();
   const [active, setActive] = useState(false);
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
+  const { cart, userInfo } = state;
 
   const handleClick = () => {
     setActive(!active);
   };
 
+  const logoutClickHandler = () => {
+    dispatch({ type: 'USER_LOGOUT' });
+    Cookies.remove('userInfo');
+    Cookies.remove('cartItems');
+    router.push('/');
+  };
   return (
     <>
       <nav className='flex items-center flex-wrap bg-orange-50 p-3 font-bold font-serif'>
@@ -64,11 +73,21 @@ export default function Header() {
                 O nas
               </a>
             </Link>
-            <Link href='/login'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
-                Zaloguj się
-              </a>
-            </Link>
+            {userInfo ? (
+              <button
+                onClick={logoutClickHandler}
+                className='lg:inline-flex font-bold lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'
+              >
+                Wyloguj się
+              </button>
+            ) : (
+              <Link href='/login'>
+                <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
+                  Zaloguj się
+                </a>
+              </Link>
+            )}
+
             <Link href='/cart'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 {cart.cartItems.length > 0 ? (
