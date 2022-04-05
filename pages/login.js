@@ -1,12 +1,20 @@
 import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
 import Layout from '../components/Layout';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../utils.js/Store';
 import Cookies from 'js-cookie';
 
 export default function Login() {
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm();
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   const { redirect } = router.query;
@@ -20,9 +28,7 @@ export default function Login() {
     }
   }, []);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-
+  const submitHandler = async ({ email, password }) => {
     try {
       const { data } = await axios.post('/api/users/login', {
         email,
@@ -31,18 +37,19 @@ export default function Login() {
       dispatch({ type: 'USER_LOGIN', payload: data });
       Cookies.set('userInfo', JSON.stringify(data));
       router.push(redirect || '/');
+      reset();
     } catch (err) {
       alert(err.response.data ? err.response.data.message : err.message);
     }
   };
   return (
-    <Layout title='login'>
+    <Layout title='logowanie'>
       <section className='login flex justify-center h-screen'>
-        <div className='formContainer w-full max-w-md lg:mt-20 mt-10 flex flex-col items-center  '>
+        <div className='formContainer w-full max-w-md lg:mt-10 mt-8 flex flex-col items-center  '>
           <h1 className='text-5xl font-semibold pb-2'>Cześć, tęskniliśmy!</h1>
           <h3 className=''>Zaloguj się do swojego konta</h3>
           <form
-            onSubmit={submitHandler}
+            onSubmit={handleSubmit(submitHandler)}
             className='w-full flex flex-col justify-start pl-8 pt-5 mb-4'
           >
             <div className='mb-4'>
@@ -56,7 +63,15 @@ export default function Login() {
                 className='h-10 w-[90%] border border-solid border-gray-500 drop-shadow-md outline-none text-xl'
                 type='email'
                 placeholder='Twój e-mail'
-                onChange={(e) => setEmail(e.target.value)}
+                {...register('email', {
+                  required: 'required',
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: 'Entered value does not match email format',
+                  },
+                })}
+
+                //onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className='mb-4'>
@@ -70,7 +85,15 @@ export default function Login() {
                 className='h-10 w-[90%] border border-solid border-gray-500 drop-shadow-md outline-none text-xl'
                 type='password'
                 placeholder='Hasło'
-                onChange={(e) => setPassword(e.target.value)}
+                {...register('password', {
+                  required: 'required',
+                  minLength: {
+                    value: 5,
+                    message: 'min length is 5',
+                  },
+                })}
+
+                // onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
