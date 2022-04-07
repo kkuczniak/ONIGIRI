@@ -1,118 +1,118 @@
 export default function Stepper(props) {
   return (
-    <div class='p-5'>
-      <div class='mx-4 md:p-4 lg:p4'>
-        <div class='flex items-center'>
-          <div class='flex items-center  text-teal-600 relative'>
-            <div class='rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600'>
+    <div className='p-5'>
+      <div className='mx-4 md:p-4 lg:px-24'>
+        <div className='flex items-center'>
+          <div className='flex items-center  text-[#8A9B68] relative'>
+            <div className='rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-[#8A9B68]'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='100%'
                 height='100%'
-                fill='none'
                 viewBox='0 0 24 24'
+                fill='none'
                 stroke='currentColor'
                 stroke-width='2'
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                class='feather feather-bookmark '
+                class='feather feather-user'
               >
-                <path d='M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'></path>
+                <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path>
+                <circle cx='12' cy='7' r='4'></circle>
               </svg>
             </div>
-            <div class='absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600'>
+            <div className='absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-[#8A9B68]'>
               Zaloguj się
             </div>
           </div>
-          <div class='flex-auto border-t-2 transition duration-500 ease-in-out border-teal-600'></div>
+          <div className='flex-auto border-t-2 transition duration-500 ease-in-out border-[#8A9B68]'></div>
           <div
-            class={`flex items-center ${
-              props.shippingDone ? 'text-teal-600' : 'text-gray-500'
+            className={`flex items-center ${
+              props.shippingDone ? 'text-[#8A9B68]' : 'text-gray-500'
             } relative`}
           >
             <div
-              class={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
-                props.shippingDone ? 'border-teal-600' : 'border-gray-300'
-              } ${props.shippingActive ? 'bg-red-50' : ''}
+              className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
+                props.shippingDone ? 'border-[#8A9B68]' : 'border-gray-300'
+              } ${props.shippingActive ? 'bg-orange-50' : ''}
               `}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='100%'
                 height='100%'
-                fill='none'
                 viewBox='0 0 24 24'
+                fill='none'
                 stroke='currentColor'
                 stroke-width='2'
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                class='feather feather-user-plus '
+                class='feather feather-truck'
               >
-                <path d='M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
-                <circle cx='8.5' cy='7' r='4'></circle>
-                <line x1='20' y1='8' x2='20' y2='14'></line>
-                <line x1='23' y1='11' x2='17' y2='11'></line>
+                <rect x='1' y='3' width='15' height='13'></rect>
+                <polygon points='16 8 20 8 23 11 23 16 16 16 16 8'></polygon>
+                <circle cx='5.5' cy='18.5' r='2.5'></circle>
+                <circle cx='18.5' cy='18.5' r='2.5'></circle>
               </svg>
             </div>
-            <div class='absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600'>
+            <div className='absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-[#8A9B68]'>
               Dostawa
             </div>
           </div>
           <div
-            class={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-              props.paymentDone ? 'border-teal-600' : 'border-gray-300'
+            className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
+              props.paymentDone ? 'border-[#8A9B68]' : 'border-gray-300'
             } `}
           ></div>
           <div
-            class={`flex items-center  ${
-              props.paymentDone ? 'text-teal-600' : 'text-gray-500'
+            className={`flex items-center  ${
+              props.paymentDone ? 'text-[#8A9B68]' : 'text-gray-500'
             } relative`}
           >
             <div
-              class={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
-                props.paymentDone ? 'border-teal-600' : 'border-gray-300'
-              } ${props.paymentActive ? 'bg-red-50' : ''} `}
+              className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 ${
+                props.paymentDone ? 'border-[#8A9B68]' : 'border-gray-300'
+              } ${props.paymentActive ? 'bg-orange-50' : ''} `}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='100%'
                 height='100%'
-                fill='none'
                 viewBox='0 0 24 24'
+                fill='none'
                 stroke='currentColor'
                 stroke-width='2'
-                checkDone
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                class='feather feather-mail '
+                class='feather feather-credit-card'
               >
-                <path d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'></path>
-                <polyline points='22,6 12,13 2,6'></polyline>
+                <rect x='1' y='4' width='22' height='16' rx='2' ry='2'></rect>
+                <line x1='1' y1='10' x2='23' y2='10'></line>
               </svg>
             </div>
             <div
-              class={`absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase ${
-                props.paymentDone ? 'text-teal-600' : 'text-gray-500'
+              className={`absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase ${
+                props.paymentDone ? 'text-[#8A9B68]' : 'text-gray-500'
               }`}
             >
               Płatność
             </div>
           </div>
           <div
-            class={`flex-auto border-t-2 transition duration-500 ease-in-out ${
-              props.checkDone ? 'border-teal-600' : 'border-gray-300'
+            className={`flex-auto border-t-2 transition duration-500 ease-in-out ${
+              props.checkDone ? 'border-[#8A9B68]' : 'border-gray-300'
             } `}
           ></div>
           <div
-            class={`flex items-center ${
-              props.checkDone ? 'text-teal-600' : 'text-gray-500'
+            className={`flex items-center ${
+              props.checkDone ? 'text-[#8A9B68]' : 'text-gray-500'
             }  relative`}
           >
             <div
-              class={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 
+              className={`rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 
               
-              ${props.checkDone ? 'border-teal-600' : 'border-gray-300'}
-              ${props.checkActive ? 'bg-red-50' : ''}
+              ${props.checkDone ? 'border-[#8A9B68]' : 'border-gray-300'}
+              ${props.checkActive ? 'bg-orange-50' : ''}
               `}
             >
               <svg
@@ -125,7 +125,7 @@ export default function Stepper(props) {
                 stroke-width='2'
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                class='feather feather-database '
+                className='feather feather-database '
               >
                 <ellipse cx='12' cy='5' rx='9' ry='3'></ellipse>
                 <path d='M21 12c0 1.66-4 3-9 3s-9-1.34-9-3'></path>
@@ -133,8 +133,8 @@ export default function Stepper(props) {
               </svg>
             </div>
             <div
-              class={`absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase ${
-                props.checkDone ? 'text-teal-600' : 'text-gray-500'
+              className={`absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase ${
+                props.checkDone ? 'text-[#8A9B68]' : 'text-gray-500'
               } `}
             >
               Podsumowanie
