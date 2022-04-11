@@ -1,10 +1,10 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
+import Stepper from '../components/Stepper';
 import { useContext, useEffect } from 'react';
 import { Store } from '../utils.js/Store';
 import Cookies from 'js-cookie';
@@ -30,7 +30,6 @@ export default function Shipping() {
 
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
-  const { redirect } = router.query;
   const {
     userInfo,
     cart: { shippingAddress },
@@ -60,10 +59,11 @@ export default function Shipping() {
 
   return (
     <Layout title='Shipping'>
+      <Stepper shippingDone={true} shippingActive={true} />
       <section className='login flex justify-center h-screen'>
         <div className='formContainer w-full max-w-md lg:mt-10 mt-8 flex flex-col items-center  '>
           <h1 className='text-5xl font-semibold pb-2'>Dane Dostawy</h1>
-          <h3 className=''>Cieszymy się, że chcesz do nas dołączyć!</h3>
+
           <form
             onSubmit={handleSubmit(submitHandler)}
             className='w-full flex flex-col justify-start pl-8 pt-5 mb-4'
