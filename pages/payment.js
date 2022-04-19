@@ -35,7 +35,7 @@ export default function Payment() {
   };
 
   return (
-    <Layout title='Payment'>
+    <Layout title='Sposób płatności'>
       <Stepper
         shippingActive={false}
         shippingDone={true}
@@ -82,7 +82,7 @@ export default function Payment() {
                   className='form-radio text-slate-400 bg-orange-50 text-xl border border-solid border-gray-500'
                   name='radio'
                   value='Cash'
-                  onClick={() => setPaymentMethod('Cash')}
+                  onClick={() => setPaymentMethod('Płatność przy odbiorze')}
                 />
                 <span class='ml-2 text-xl'>Płatność przy odbiorze</span>
               </label>

@@ -64,19 +64,19 @@ export default function Header() {
         >
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
             <Link href='/products'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black '>
+              <a className='lg:inline-flex flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black '>
                 Produkty
               </a>
             </Link>
             <Link href='/about'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
+              <a className='lg:inline-flex flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 O nas
               </a>
             </Link>
             {userInfo ? (
               <button
                 onClick={logoutClickHandler}
-                className='lg:inline-flex font-bold lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'
+                className='lg:inline-flex flex font-bold lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'
               >
                 Wyloguj się
               </button>
@@ -89,7 +89,7 @@ export default function Header() {
             )}
 
             <Link href='/cart'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
+              <a className='lg:inline-flex flex lg:w-auto w-full px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 {cart.cartItems.length > 0 ? (
                   <span>Koszyk ({cart.cartItems.length})</span>
                 ) : (
