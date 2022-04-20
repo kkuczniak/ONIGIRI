@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Stepper from '../components/Stepper';
 import axios from 'axios';
@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Store } from '../utils.js/Store';
 import Layout from '../components/Layout';
+import { getError } from '../utils.js/error';
+import Cookies from 'js-cookie';
 
 function PlaceOrder() {
   const router = useRouter();
@@ -15,12 +17,45 @@ function PlaceOrder() {
     userInfo,
     cart: { cartItems, shippingAddress, paymentMethod },
   } = state;
+  const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
+  const totalPrice = round2(
+    cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
+  );
 
   useEffect(() => {
     if (!paymentMethod) {
       router.push('/payment');
     }
+    if (cartItems.length === 0) {
+      router.push('/cart');
+    }
   }, []);
+
+  const [loading, setLoading] = useState(false);
+  // TODO ADD LOADING CIRCLE and error https://github.com/fkhadra/react-toastify
+  const placeOrderHandler = async () => {
+    try {
+      const { data } = await axios.post(
+        '/api/orders',
+        {
+          orderOItems: cartItems,
+          shippingAddress,
+          paymentMethod,
+          totalPrice,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      dispatch({ type: 'CART_CLEAR' });
+      Cookies.remove('cartItems');
+      router.push(`/order/${data._id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Layout title='Podsumowanie'>
@@ -103,12 +138,15 @@ function PlaceOrder() {
                 </div>
               </div>
               <div className='summaryCart pt-5'>
-                <h2>
+                <h2 className='font-semibold'>
                   Kwota do zapłaty (
                   {cartItems.reduce((a, c) => a + c.quantity, 0)} produkty) :{' '}
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)} zł
+                  {totalPrice} zł
                 </h2>
-                <button className='w-56 py-1 flex justify-center bg-neutral-800 text-white uppercase'>
+                <button
+                  onClick={placeOrderHandler}
+                  className='w-56 py-1 flex justify-center bg-neutral-800 text-white uppercase'
+                >
                   Kup i zapłać
                 </button>
               </div>

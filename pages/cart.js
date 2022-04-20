@@ -33,11 +33,11 @@ function CartScreen() {
   };
 
   return (
-    <Layout title='Podsumowanie'>
+    <Layout title='Twój koszyk'>
       <section className='cart items-center flex justify-center flex-col pt-5'>
         <div className='cartContainer w-96 lg:w-[30%] text-xl'>
           <div className='cartHeader border-b border-solid border-gray-900'>
-            <h1 className='text-2xl font-semibold '>Podsumowanie</h1>
+            <h1 className='pb-2 text-2xl font-semibold '>Twój koszyk</h1>
           </div>
 
           {cartItems.length === 0 ? (
