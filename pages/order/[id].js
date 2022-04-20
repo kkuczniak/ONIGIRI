@@ -1,89 +1,89 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useReducer } from 'react';
 import { useRouter } from 'next/router';
-import Stepper from '../components/Stepper';
+
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Store } from '../utils.js/Store';
-import Layout from '../components/Layout';
-import { getError } from '../utils.js/error';
+import { Store } from '../../utils.js/Store';
+import Layout from '../../components/Layout';
+import { getError } from '../../utils.js/error';
 import Cookies from 'js-cookie';
 
-function PlaceOrder() {
+function reducer(state, action) {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true, error: '' };
+    case 'FETCH_SUCCESS':
+      return { ...state, loading: false, order: action.payload, error: '' };
+    case 'FETCH_ERROR':
+      return { ...state, loading: false, error: action.payload };
+  }
+}
+
+function Order({ params }) {
+  const orderId = params.id;
   const router = useRouter();
-  const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
+  const { userInfo } = state;
+
+  const [{ loading, error, order }, dispatch] = useReducer(reducer, {
+    loading: true,
+    order: {},
+    error: '',
+  });
   const {
-    userInfo,
-    cart: { cartItems, shippingAddress, paymentMethod },
-  } = state;
-  const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
-  const totalPrice = round2(
-    cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
-  );
+    shippingAddress,
+    paymentMethod,
+    orderItems,
+    totalPrice,
+    isPaid,
+    paidAt,
+    isDelivered,
+    deliveredAt,
+  } = order;
 
   useEffect(() => {
-    if (!paymentMethod) {
-      router.push('/payment');
+    if (!userInfo) {
+      return router.push('/login');
     }
-    if (cartItems.length === 0) {
-      router.push('/cart');
+    const fetchOrder = async () => {
+      try {
+        dispatch({ type: 'FETCH_REQUEST' });
+        const { data } = await axios.get(`/api/orders/${orderId}`, {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        });
+        dispatch({ type: 'FETCH_SUCCESS', payload: data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_ERROR', payload: getError(err) });
+      }
+    };
+    if (!order._id || (order._id && order._id !== orderId)) {
+      fetchOrder();
     }
-  }, []);
-
-  const [loading, setLoading] = useState(false);
-  // TODO ADD LOADING CIRCLE and error https://github.com/fkhadra/react-toastify
-  const placeOrderHandler = async () => {
-    try {
-      const { data } = await axios.post(
-        '/api/orders',
-        {
-          orderItems: cartItems,
-          shippingAddress,
-          paymentMethod,
-          totalPrice,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${userInfo.token}`,
-          },
-        }
-      );
-      dispatch({ type: 'CART_CLEAR' });
-      Cookies.remove('cartItems');
-      router.push(`/order/${data._id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  }, [order]);
 
   return (
-    <Layout title='Podsumowanie'>
-      <Stepper
-        shippingActive={false}
-        shippingDone={true}
-        paymentActive={false}
-        paymentDone={true}
-        checkDone={true}
-        checkActive={true}
-      />
+    <Layout title='Status zamówie'>
       <section className='cart items-center flex justify-center flex-col pt-5'>
         <div className='cartContainer w-96 lg:w-[30%] text-xl'>
           <div className='cartHeader border-b border-solid border-gray-900'>
-            <h1 className=' pb-2 text-2xl font-semibold '>Podsumowanie</h1>
+            <h1 className=' pb-2 text-2xl font-semibold '>Status zamówienia</h1>
           </div>
 
-          {cartItems.length === 0 ? (
+          {loading ? (
             <div className='emptyCart'>
-              <h2>Twój koszyk jest pusty</h2>
+              <h2>Ładowanie</h2>
             </div>
+          ) : error ? (
+            <h2>error</h2>
           ) : (
             <div className='fullCart'>
               <div className='cartItemsTable '>
                 <h3 className='pb-2 text-xl font-semibold tracking-tighter'>
                   Produkty
                 </h3>
-                {cartItems.map((item) => (
+                {orderItems.map((item) => (
                   <div
                     className='tableRow flex flex-row py-2 justify-between border-b border-gray-400 border-solid'
                     key={item._id}
@@ -126,6 +126,19 @@ function PlaceOrder() {
               </div>
               <div className='cartItemsTable border-b border-gray-400 border-solid'>
                 <h3 className='pb-2 text-xl font-semibold tracking-tighter'>
+                  Status zamówienia
+                </h3>
+                <div className='flex flex-row pb-2'>
+                  <p>Status dostawy: </p>
+                  <p>
+                    {isDelivered
+                      ? `dostarczono dnia ${deliveredAt}`
+                      : 'dostawa w toku'}
+                  </p>
+                </div>
+              </div>
+              <div className='cartItemsTable border-b border-gray-400 border-solid'>
+                <h3 className='pb-2 text-xl font-semibold tracking-tighter'>
                   Sposób płatności
                 </h3>
 
@@ -137,18 +150,21 @@ function PlaceOrder() {
                   </p>
                 </div>
               </div>
+              <div className='cartItemsTable border-b border-gray-400 border-solid'>
+                <h3 className='pb-2 text-xl font-semibold tracking-tighter'>
+                  Status płatności
+                </h3>
+                <div className='flex flex-row pb-2'>
+                  <p>płatność: </p>
+                  <p>{isPaid ? `zapłacono ${paidAt}` : 'nie zapłacono'}</p>
+                </div>
+              </div>
               <div className='summaryCart pt-5'>
                 <h2 className='font-semibold'>
                   Kwota do zapłaty (
-                  {cartItems.reduce((a, c) => a + c.quantity, 0)} produkty) :{' '}
+                  {orderItems.reduce((a, c) => a + c.quantity, 0)} produkty) :{' '}
                   {totalPrice} zł
                 </h2>
-                <button
-                  onClick={placeOrderHandler}
-                  className='w-56 py-1 flex justify-center bg-neutral-800 text-white uppercase'
-                >
-                  Kup i zapłać
-                </button>
               </div>
             </div>
           )}
@@ -157,4 +173,7 @@ function PlaceOrder() {
     </Layout>
   );
 }
-export default dynamic(() => Promise.resolve(PlaceOrder), { ssr: false });
+export async function getServerSideProps({ params }) {
+  return { props: { params } };
+}
+export default dynamic(() => Promise.resolve(Order), { ssr: false });
