@@ -232,7 +232,19 @@ function Order({ params }) {
                 {!isPaid && (
                   <div>
                     {isPending ? (
-                      <p>Loading</p> //TODO add spinning loader
+                      <div className='flex justify-center pt-7'>
+                        <div className='relative'>
+                          <div
+                            className='w-12 h-12 rounded-full absolute
+                            border-4 border-solid border-gray-200'
+                          ></div>
+
+                          <div
+                            className='w-12 h-12 rounded-full animate-spin absolute
+                            border-4 border-solid border-[#8A9B68] border-t-transparent'
+                          ></div>
+                        </div>
+                      </div>
                     ) : (
                       <div className='py-1 flex justify-center'>
                         <PayPalButtons
