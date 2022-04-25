@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Head from 'next/head';
 
 //components
-import Header from './Header';
+import Navbar from './Navbar';
 import { Store } from '../utils.js/Store';
 
 export default function Layout({ title, children, description }) {
@@ -15,7 +15,7 @@ export default function Layout({ title, children, description }) {
         {description && <meta name='description' content={description} />}
         <link rel='shortcut icon' href='/leafIcon.png' />
       </Head>
-      <Header />
+      <Navbar />
       <main className='font-serif font-medium '>{children}</main>
     </>
   );

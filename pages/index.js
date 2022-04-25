@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
+import Header from '../components/Header';
 import db from '../utils.js/db';
 import Product from '../models/Product';
 import axios from 'axios';
@@ -29,6 +30,7 @@ export default function Home(props) {
     <>
       <Layout>
         <div>
+          <Header />
           <ul className='HomePage-Products flex lg:flex-row flex-col justify-center pt-8'>
             {products.slice(0, 3).map((product) => (
               <li key={product.name} className='py-0 px-3 lg:w-1/4 w-full'>
