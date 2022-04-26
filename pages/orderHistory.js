@@ -80,43 +80,39 @@ function OrderHistory() {
               <div className='cartItemsTable '>
                 <h3 className='pb-2 text-xl font-semibold tracking-tighter'></h3>
                 <div className='tableRow flex flex-row py-2  font-semibold border-b border-gray-400 border-solid'>
-                  <div className='tableCell px-1 flex items-center w-1/4'>
+                  <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                     <h4>Zamówiono</h4>
                   </div>
-                  <div className='tableCell px-1 flex items-center w-1/4'>
+                  <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                     <h4>Płatność</h4>
                   </div>
-                  <div className='tableCell px-1 flex items-center w-1/4'>
+                  <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                     <h4>Cena</h4>
                   </div>
-                  <div className='tableCell px-1 flex items-center w-1/4'>
+                  <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                     <h4>Info</h4>
                   </div>
                 </div>
                 {orders.map((order) => (
                   <div
-                    className='tableRow flex flex-row py-2  border-b border-gray-400 border-solid'
+                    className='tableRow flex flex-row py-2  border-b border-gray-400 border-solid bg-[#ffe6a11c]'
                     key={order._id}
                   >
-                    <div className='tableCell px-1 flex items-center w-1/4'>
+                    <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                       <p>{order.createdAt.split('T')[0]} </p>
                     </div>
-                    <div className='tableCell px-1 flex items-center w-1/4'>
+                    <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                       <p>
                         {order.isPaid
                           ? ` ${order.paidAt.split('T')[0]}`
-                          : 'nie zapłacono'}
+                          : 'do zapłaty'}
                       </p>
                     </div>
-                    <div className='tableCell px-1 flex items-center w-1/4'>
+                    <div className='tableCell px-1 flex items-center w-1/4 justify-center'>
                       <p>{order.totalPrice} zł.</p>
                     </div>
-                    <Link
-                      href={`/order/${order._id}`}
-                      passHref
-                      className='tableCell px-1 flex items-center w-1/4 cursor-pointe'
-                    >
-                      <button className='bg-orange-50 border border-gray-600'>
+                    <Link href={`/order/${order._id}`} passHref>
+                      <button className='bg-orange-50 border border-gray-600 tableCell px-1 flex items-center w-1/4 cursor-pointe justify-center'>
                         Szczegóły
                       </button>
                     </Link>

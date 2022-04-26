@@ -39,8 +39,8 @@ export default function ProductScreen(props) {
             <Image
               src={product.image}
               alt={product.name}
-              width={700}
-              height={700}
+              width={640}
+              height={800}
             />
           </div>
           <div className='rightDetails flex flex-col lg:p-20 p-5  lg:w-1/2 '>
@@ -81,8 +81,8 @@ export default function ProductScreen(props) {
           </div>
         </section>
         {/* packing section below */}
-        <section className='aboutDetails flex lg:flex-row flex-col items-center bg-[#f1f4f0] mt-12 lg:mt-1'>
-          <video autoPlay loop className='h-'>
+        <section className='aboutDetails flex lg:flex-row flex-col items-center bg-[#f1f4f0] mt-12 lg:my-32'>
+          <video autoPlay loop>
             <source src='/videos/packing.mp4' type='video/mp4' />
           </video>
           <div className='textPacking lg:pl-[5%]'>
@@ -98,7 +98,7 @@ export default function ProductScreen(props) {
             </div>
           </div>
         </section>
-        <section className='faq mt-20 min-h-[40vh] bg-[#303b31] items-center flex flex-col text-white lg:px-96 px-5'>
+        <section className='faq mt-20 min-h-[40vh] bg-[#303b31] items-center flex flex-col text-white lg:py-10 lg:px-96 px-5'>
           <h1 className='tracking-wide lg:text-4xl text-2xl py-5 font-bold'>
             Nadal masz pytania? Przejrzyj nasz FAQ!
           </h1>

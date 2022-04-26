@@ -23,29 +23,29 @@ export default function Footer() {
             </li>
           </ul>
           <div className='icons flex flex-row mt-6  justify-center'>
-            <img
+            <Image
               src='/icons/icons8-facebook-50.svg'
               alt='Facebookme'
-              width='50'
-              height='50'
+              width={50}
+              height={50}
             />
-            <img
+            <Image
               src='/icons/icons8-instagram-50.svg'
               alt='instagram'
-              width='50'
-              height='50'
+              width={50}
+              height={50}
             />
-            <img
+            <Image
               src='/icons/icons8-tiktok-50.svg'
               alt='tiktok'
-              width='50'
-              height='50'
+              width={50}
+              height={50}
             />
-            <img
+            <Image
               src='/icons/icons8-twitter-50.svg'
               alt='tweeter'
-              width='50'
-              height='50'
+              width={50}
+              height={50}
             />
           </div>
         </div>

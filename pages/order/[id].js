@@ -220,7 +220,11 @@ function Order({ params }) {
                 </h3>
                 <div className='flex flex-row pb-2'>
                   <p>płatność: </p>
-                  <p>{isPaid ? `zapłacono ${paidAt}` : 'nie zapłacono'}</p>
+                  <p>
+                    {isPaid
+                      ? ` zapłacono ${paidAt.split('T')[0]}`
+                      : 'nie zapłacono'}
+                  </p>
                 </div>
               </div>
               <div className='summaryCart pt-5'>
