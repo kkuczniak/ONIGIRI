@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <>
       <nav className='flex items-center flex-wrap bg-orange-50 p-3 font-bold font-serif'>
-        <Link href='/'>
+        <Link href='/' passHref>
           <a className='inline-flex items-center p-2 mr-4 '>
             <svg
               viewBox='0 0 24 24'
@@ -63,19 +63,19 @@ export default function Navbar() {
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
-            <Link href='/allProducts'>
+            <Link href='/allProducts' passHref>
               <a className='lg:inline-flex flex lg:w-auto w-full text-lg px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black '>
                 Produkty
               </a>
             </Link>
-            <Link href='/about'>
+            <Link href='/about' passHref>
               <a className='lg:inline-flex flex lg:w-auto w-full text-lg px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 O nas
               </a>
             </Link>
             {userInfo ? (
               <>
-                <Link href='/orderHistory'>
+                <Link href='/orderHistory' passHref>
                   <a className='lg:inline-flex flex lg:w-auto w-full text-lg px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                     Zamówienia
                   </a>
@@ -88,14 +88,14 @@ export default function Navbar() {
                 </button>
               </>
             ) : (
-              <Link href='/login'>
+              <Link href='/login' passHref>
                 <a className='lg:inline-flex flex lg:w-auto w-full text-lg px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                   Zaloguj się
                 </a>
               </Link>
             )}
 
-            <Link href='/cart'>
+            <Link href='/cart' passHref>
               <a className='lg:inline-flex flex lg:w-auto w-full text-lg px-3 py-2 rounded text-black  items-center justify-center hover:bg-red-50 hover:text-black'>
                 {cart.cartItems.length > 0 ? (
                   <span>Koszyk ({cart.cartItems.length})</span>

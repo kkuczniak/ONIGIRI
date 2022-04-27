@@ -140,7 +140,9 @@ export default function Register() {
           </form>
 
           <p>Masz już konto?</p>
-          <Link href={`/login?redirect=${redirect || '/'}`}>Zaloguj się</Link>
+          <Link href={`/login?redirect=${redirect || '/'}`} passHref>
+            Zaloguj się
+          </Link>
         </div>
       </section>
     </Layout>

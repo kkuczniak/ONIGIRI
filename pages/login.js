@@ -105,7 +105,9 @@ export default function Login() {
             </button>
           </form>
           <p>Nie posiadasz konta?</p>
-          <Link href='/register'>Zarejestruj się</Link>
+          <Link href='/register' passHref>
+            Zarejestruj się
+          </Link>
         </div>
       </section>
     </Layout>

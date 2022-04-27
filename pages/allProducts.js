@@ -34,7 +34,7 @@ export default function AllProducts(props) {
           {products.slice(0, 6).map((product) => (
             <li key={product.name} className='py-3 px-3 lg:w-1/4 w-full'>
               <div className='pb-10 h-full'>
-                <Link href={`/product/${product.slug}`}>
+                <Link href={`/product/${product.slug}`} passHref>
                   <div className='flex relative flex-col justify-between h-full cursor-pointer'>
                     <img src={product.image} alt='' />
                     <div className='description px-1'>

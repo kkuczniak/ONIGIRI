@@ -89,7 +89,7 @@ function PlaceOrder() {
                     key={item._id}
                   >
                     <div className='tableCell flex items-center'>
-                      <Link href={`/product/${item.slug}`}>
+                      <Link href={`/product/${item.slug}`} passHref>
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -99,7 +99,7 @@ function PlaceOrder() {
                       </Link>
                     </div>
                     <div className='tableCell px-1 flex items-center'>
-                      <Link href={`/product/${item.slug}`}>
+                      <Link href={`/product/${item.slug}`} passHref>
                         <p>{item.name}</p>
                       </Link>
                     </div>

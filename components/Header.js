@@ -21,7 +21,7 @@ export default function Header() {
             Sprawdź nowości stworzone dla pielęgnacji skóry by powitać wiosenną
             pogodę bez żadnych zmartwień!
           </h3>
-          <Link href='/allProducts'>
+          <Link href='/allProducts' passHref>
             <a className='mx-auto md:mx-0 lg:mx-0  mt-14 p-2 tracking-wider uppercase border rounded w-auto md:w-48 text-center bg-[#ffffff23]'>
               Nowości
             </a>
