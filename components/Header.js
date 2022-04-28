@@ -7,6 +7,8 @@ export default function Header() {
       <video
         loop
         autoPlay
+        muted
+        playsinline
         className='absolute object-cover top-0 left-0 m-0 p-0 w-full h-full'
       >
         <source src='/videos/header.mp4' type='video/mp4' />

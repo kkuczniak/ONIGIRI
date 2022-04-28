@@ -9,6 +9,8 @@ export default function About() {
       <header className='min-h-[630px] relative pt-24 px-0 pb-20 mb-6 lg:text-left md:text-left text-center'>
         <video
           loop
+          muted
+          playsinline
           autoPlay
           className='absolute object-cover top-0 left-0 m-0 p-0 w-full h-full'
         >
