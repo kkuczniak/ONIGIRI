@@ -5,20 +5,20 @@ export default function Footer() {
   return (
     <footer className='sticky bottom-0 -z-10 w-full left-0 bg-black text-white font-serif'>
       <div className='mx-auto relative px-8 flex flex-col md:flex-row max-w-7xl'>
-        <div className='flex flex-col py-14 pr-7 border-r border-white text-center'>
+        <div className='flex flex-col py-14 lg:pr-7 border-r border-white text-center'>
           <ul>
             <Image src='/leafIcon.png' alt='me' width='50' height='50' />
             <h3 className='text-4xl mb-5'>ONI GIRI</h3>
-            <li className='pl-4 leading-3 tracking-wide text-xl mb-4'>
+            <li className='leading-3 tracking-wide text-xl mb-4'>
               <span>Lorem Ips</span>
             </li>
-            <li className='pl-4 leading-3 tracking-wide text-xl mb-4'>
+            <li className=' leading-3 tracking-wide text-xl mb-4'>
               <span>Lorem Ips</span>
             </li>
-            <li className='pl-4 leading-3 tracking-wide text-xl mb-4'>
+            <li className=' leading-3 tracking-wide text-xl mb-4'>
               <span>Lorem Ips</span>
             </li>
-            <li className='pl-4 leading-3 tracking-wide text-xl mb-4'>
+            <li className='leading-3 tracking-wide text-xl mb-4'>
               <span>Lorem Ips</span>
             </li>
           </ul>

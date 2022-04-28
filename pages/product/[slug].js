@@ -34,7 +34,7 @@ export default function ProductScreen(props) {
   return (
     <Layout title={product.name} description={product.description}>
       <div className='detailsContainer '>
-        <section className='firstDetails h-screen flex flex-col lg:flex-row mb-12 lg:mb-3'>
+        <section className='firstDetails min-h-screen flex flex-col lg:flex-row mb-12 lg:mb-3'>
           <div className='leftDetails'>
             <Image
               src={product.image}
@@ -49,7 +49,7 @@ export default function ProductScreen(props) {
                 {product.name}
               </h1>
               <p>{product.category}</p>
-              <p>{product.brand}</p>
+
               <div className='detailsDescriptionText flex w-full lg:w-4/5 pt-5 text-xl'>
                 <p className='tracking-wide'>{product.descriptionDetails}</p>
               </div>
@@ -65,7 +65,7 @@ export default function ProductScreen(props) {
                   >
                     -
                   </button>
-                  <p>{count}</p>
+                  <p className='text-3xl pb-[10px]'>{count}</p>
                   <button onClick={() => setCount(count + 1)}>+</button>
                 </div>
                 <div className='addToBasketDetails flex mb-4'>
