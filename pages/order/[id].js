@@ -124,7 +124,7 @@ function Order({ params }) {
     });
   }
   function onError(err) {
-    console.error(error);
+    console.error(err);
   }
 
   return (

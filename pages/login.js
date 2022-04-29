@@ -3,24 +3,16 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import Layout from '../components/Layout';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Store } from '../utils.js/Store';
 import Cookies from 'js-cookie';
 
 export default function Login() {
-  const {
-    handleSubmit,
-    register,
-    control,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const { handleSubmit, register, reset } = useForm();
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   const { redirect } = router.query;
   const { userInfo } = state;
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   useEffect(() => {
     if (userInfo) {
@@ -55,7 +47,7 @@ export default function Login() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='username'
+                htmlFor='username'
               >
                 TWÓJ E-MAIL
               </label>
@@ -77,7 +69,7 @@ export default function Login() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='password'
+                htmlFor='password'
               >
                 HASŁO
               </label>

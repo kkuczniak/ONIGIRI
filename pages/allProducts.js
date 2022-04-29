@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Layout from '../components/Layout';
 import db from '../utils.js/db';
 import Product from '../models/Product';

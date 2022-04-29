@@ -12,9 +12,9 @@ export default function Stepper(props) {
                 viewBox='0 0 24 24'
                 fill='none'
                 stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 className='feather feather-user'
               >
                 <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path>
@@ -44,9 +44,9 @@ export default function Stepper(props) {
                 viewBox='0 0 24 24'
                 fill='none'
                 stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 className='feather feather-truck'
               >
                 <rect x='1' y='3' width='15' height='13'></rect>
@@ -81,9 +81,9 @@ export default function Stepper(props) {
                 viewBox='0 0 24 24'
                 fill='none'
                 stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 className='feather feather-credit-card'
               >
                 <rect x='1' y='4' width='22' height='16' rx='2' ry='2'></rect>
@@ -122,9 +122,9 @@ export default function Stepper(props) {
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 className='feather feather-database '
               >
                 <ellipse cx='12' cy='5' rx='9' ry='3'></ellipse>

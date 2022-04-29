@@ -22,13 +22,7 @@ export default function Register() {
     email: Yup.string().email(),
   });
 
-  const {
-    handleSubmit,
-    register,
-    control,
-    formState: { errors },
-    reset,
-  } = useForm({
+  const { handleSubmit, register } = useForm({
     resolver: yupResolver(formSchema),
   });
 
@@ -76,7 +70,7 @@ export default function Register() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='username'
+                htmlFor='username'
               >
                 Imię
               </label>
@@ -91,7 +85,7 @@ export default function Register() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='username'
+                htmlFor='username'
               >
                 TWÓJ E-MAIL
               </label>
@@ -105,7 +99,7 @@ export default function Register() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='password'
+                htmlFor='password'
               >
                 HASŁO
               </label>
@@ -119,7 +113,7 @@ export default function Register() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='password'
+                htmlFor='password'
               >
                 POTWIERDŹ HASŁO
               </label>

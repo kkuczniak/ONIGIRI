@@ -20,9 +20,7 @@ export default function Shipping() {
   const {
     handleSubmit,
     register,
-    control,
-    formState: { errors },
-    reset,
+
     setValue,
   } = useForm({
     resolver: yupResolver(formSchema),
@@ -71,7 +69,7 @@ export default function Shipping() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='fullName'
+                htmlFor='fullName'
               >
                 Imię
               </label>
@@ -85,7 +83,7 @@ export default function Shipping() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='Address'
+                htmlFor='Address'
               >
                 Ulica
               </label>
@@ -99,7 +97,7 @@ export default function Shipping() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='username'
+                htmlFor='username'
               >
                 Miasto
               </label>
@@ -113,7 +111,7 @@ export default function Shipping() {
             <div className='mb-4'>
               <label
                 className='block text-gray-600 text-sm font-bold mb-2 uppercase'
-                for='username'
+                htmlFor='username'
               >
                 Kod Pocztowy
               </label>

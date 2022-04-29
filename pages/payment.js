@@ -52,7 +52,7 @@ export default function Payment() {
             className='w-full flex flex-col justify-start pl-8 pt-5 mb-4'
           >
             <div>
-              <label class='inline-flex items-center h-10'>
+              <label className='inline-flex items-center h-10'>
                 <input
                   type='radio'
                   className='form-radio text-slate-400 bg-orange-50 text-xl border border-solid border-gray-500'
@@ -60,11 +60,11 @@ export default function Payment() {
                   value='PayPal'
                   onClick={() => setPaymentMethod('PayPal')}
                 />
-                <span class='ml-2 text-xl'>PayPal</span>
+                <span className='ml-2 text-xl'>PayPal</span>
               </label>
             </div>
             <div>
-              <label class='inline-flex items-center h-10'>
+              <label className='inline-flex items-center h-10'>
                 <input
                   type='radio'
                   className='form-radio text-slate-400 bg-orange-50 text-xl border border-solid border-gray-500'
@@ -72,11 +72,11 @@ export default function Payment() {
                   value='Stripe'
                   onClick={() => setPaymentMethod('Stripe')}
                 />
-                <span class='ml-2 text-xl'>Stripe</span>
+                <span className='ml-2 text-xl'>Stripe</span>
               </label>
             </div>
             <div>
-              <label class='inline-flex items-center h-10'>
+              <label className='inline-flex items-center h-10'>
                 <input
                   type='radio'
                   className='form-radio text-slate-400 bg-orange-50 text-xl border border-solid border-gray-500'
@@ -84,7 +84,7 @@ export default function Payment() {
                   value='Cash'
                   onClick={() => setPaymentMethod('Płatność przy odbiorze')}
                 />
-                <span class='ml-2 text-xl'>Płatność przy odbiorze</span>
+                <span className='ml-2 text-xl'>Płatność przy odbiorze</span>
               </label>
             </div>
             <button

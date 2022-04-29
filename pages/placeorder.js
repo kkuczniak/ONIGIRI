@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Stepper from '../components/Stepper';
 import axios from 'axios';
@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Store } from '../utils.js/Store';
 import Layout from '../components/Layout';
-import { getError } from '../utils.js/error';
 import Cookies from 'js-cookie';
 
 function PlaceOrder() {
@@ -31,7 +30,7 @@ function PlaceOrder() {
     }
   }, []);
 
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   // TODO ADD LOADING CIRCLE and error https://github.com/fkhadra/react-toastify
   const placeOrderHandler = async () => {
     try {

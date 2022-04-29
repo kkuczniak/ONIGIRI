@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Head from 'next/head';
 
 //components
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Store } from '../utils.js/Store';
 
 export default function Layout({ title, children, description }) {
-  const { state, dispatch } = useContext(Store);
-
   return (
     <>
       <Head>
